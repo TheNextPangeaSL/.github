@@ -1,0 +1,23 @@
+# Deploy to ECS with GitHub OIDC (no access keys).
+# 1. Ask the DPWG for the OIDC role of this repository (DPWG → "Generar rol OIDC").
+# 2. Fill in the values below (DPWG's "Workflow" tab gives them already filled in).
+# 3. Delete AWS_ACCESS_KEY_ID / AWS_SECRET_ACCESS_KEY from the repository secrets.
+name: Deploy
+
+on:
+  push:
+    branches: [$default-branch]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    permissions:
+      id-token: write
+      contents: read
+    uses: TheNextPangeaSL/platform-workflows/.github/workflows/deploy-ecs.yml@v1
+    with:
+      deploy_role_arn: arn:aws:iam::<account-id>:role/<repo>-github-actions-role
+      ecr_repository: <ecr-repository>
+      extra_tags: ${{ github.ref_name }}
+      ecs_cluster: <cluster>
+      ecs_service: <service>

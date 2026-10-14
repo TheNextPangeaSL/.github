@@ -1,0 +1,6 @@
+{
+  "name": "Deploy static site to S3 (OIDC)",
+  "description": "Build a static site, upload it to S3 and invalidate CloudFront with a GitHub OIDC role. Shared workflow from TheNextPangeaSL/platform-workflows.",
+  "iconName": "octicon globe",
+  "categories": ["Deployment", "JavaScript"]
+}
