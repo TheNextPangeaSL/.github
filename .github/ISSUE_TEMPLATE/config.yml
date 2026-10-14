@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 🔒 Informar de una vulnerabilidad
+    url: https://github.com/TheNextPangeaSL/.github/blob/development/SECURITY.md
+    about: No abras un issue público; sigue la política de seguridad.
+  - name: ✉️ Contacto comercial
+    url: https://thenextpangea.com
+    about: Para propuestas, clientes y colaboraciones, contacta desde la web.

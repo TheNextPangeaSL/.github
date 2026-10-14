@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [development]
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    name: Lint workflow templates
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: actionlint
+        run: |
+          docker run --rm -v "$PWD:/repo" -w /repo rhysd/actionlint:1.7.7 -color \
+            .github/workflows/*.yml workflow-templates/*.yml
+      - name: Template metadata is valid JSON
+        run: for f in workflow-templates/*.properties.json; do jq empty "$f"; done

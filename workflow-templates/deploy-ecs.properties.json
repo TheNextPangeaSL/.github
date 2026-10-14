@@ -1,0 +1,6 @@
+{
+  "name": "Deploy to ECS (OIDC)",
+  "description": "Build a Docker image, push it to ECR and deploy it to an ECS service with a GitHub OIDC role. Shared workflow from TheNextPangeaSL/platform-workflows.",
+  "iconName": "octicon rocket",
+  "categories": ["Deployment", "Dockerfile"]
+}

@@ -1,0 +1,21 @@
+# Deploy a static site to S3 + CloudFront with GitHub OIDC (no access keys).
+# Ask the DPWG for the OIDC role of this repository and fill in the values below.
+name: Deploy site
+
+on:
+  push:
+    branches: [$default-branch]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    permissions:
+      id-token: write
+      contents: read
+    uses: TheNextPangeaSL/platform-workflows/.github/workflows/deploy-s3-static.yml@v1
+    with:
+      deploy_role_arn: arn:aws:iam::<account-id>:role/<repo>-github-actions-role
+      s3_bucket: <bucket>
+      build_command: npm ci && npm run build
+      source_dir: dist
+      cloudfront_distribution_id: <distribution-id>
