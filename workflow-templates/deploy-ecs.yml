@@ -21,9 +21,8 @@ jobs:
       extra_tags: ${{ github.ref_name }}
       ecs_cluster: <cluster>
       ecs_service: <service>
-      # Optional: run a one-off task with the new image before updating the service, e.g.
-      # database migrations. It uses the service's network settings; the deploy stops if the
-      # task exits with a non-zero code, and the running version keeps serving meanwhile.
+      # Optional: run a one-off task on the new task definition before updating the service
+      # (e.g. database migrations); the service is only updated if it exits 0.
       # migration_command: '["<executable>", "<argument>"]'
-      # migration_environment: '[{"name": "<VARIABLE>", "value": "<value>"}]'
-      # migration_timeout_minutes: 60
+      # migration_environment: |
+      #   <VARIABLE>=<value>
